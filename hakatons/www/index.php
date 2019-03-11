@@ -1,3 +1,6 @@
+<?
+       require_once"functions/functions.php";
+  ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -101,7 +104,8 @@
 	</thead>
 	<tbody> 
 	<?
-	for( $i = 0; $i<5; $i++ ) {
+	$news = getAllArticles();
+    for ($i = 0; $i < count($news); $i++){
             $id="sub_m$i";
             $id_subT="Subtable$i";
             $td_id="tdd$i";
@@ -109,7 +113,7 @@
     		'.$id_subT.'
 
 		<tr>
-		   	<td>Rigas valsts tehnikums</td>
+		   	<td>'.$news[$i]['Iestades_nosaukums'].'</td>
 		   	<td>5</td></td>
 		   	<td>Videja </td>
 
