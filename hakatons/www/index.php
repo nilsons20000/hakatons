@@ -1,6 +1,8 @@
 <?
-       require_once"functions/functions.php";
-  ?>
+    require_once"functions/functions.php";
+	include "functions/locations_model.php";
+
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +12,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript" src="./js/menu.js"></script>
 	<script src="https://use.fontawesome.com/320ac68418.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
+<script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'></script>
 </head>
 <body>
 <div id="page-wrap">
@@ -89,10 +95,24 @@
 	</div> 
 	<span id="open"onclick="openNav()">☰ open</span>
 </header>
-<div class="mape">
-	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2233344.5327052334!2d22.301421022006625!3d56.86308620563183!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46e930677b8a9afd%3A0xcfcd68f2fc10!2z0JvQsNGC0LLQuNGP!5e0!3m2!1sru!2slv!4v1551807148225" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-</div>
+<div id="map" style="width: 100%; height: 440px; border: 1px solid #AAA;"></div> 
+<script>
+  var tempArray = JSON.parse('<?php get_saved_locations(); ?>');
+  var map = L.map( 'map', {
+    center: [57.08233,25.24116],
+    minZoom: 0.5,
+    zoom: 7
+  })
 
+  L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  subdomains: ['a', 'b', 'c']
+  }).addTo( map )
+
+  for ( var i=0; i < tempArray.length; ++i ){
+    L.marker(tempArray[i]).bindPopup( '<a href="' + tempArray[i] + '" target="_blank">' + tempArray[i][2] + '</a>' ) .addTo( map );
+}
+</script>
 <nav class="dws-menu">  
 	<table width="100%" id="table">
 	<thead>

@@ -1,15 +1,11 @@
 <?php
-
 	function connectDB() {
 		$connect = mysql_connect("localhost", "root", "");
 		mysql_select_db("ucebnie_zavedenija_latvii", $connect);
 		mysql_set_charset("cp1257_general_ci", $connect);
 		mysql_query("SET NAMES UTF8");
-
-
 		return $connect;
 	}
-
 	function closeDB($connect) {
 		mysql_close($connect);
 	}
@@ -37,5 +33,5 @@
 		
 
 
-
+	
 ?>
