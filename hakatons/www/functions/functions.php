@@ -30,8 +30,3 @@
 		$result = mysql_fetch_row($result);
 		return $result[0];
 	}
-		
-
-
-	
-?>

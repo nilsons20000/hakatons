@@ -1,5 +1,6 @@
-<?
+<?php
 function get_saved_locations(){
+    //TODO:Izmantojot datus no klases schools pārtaisīt šo funkciju
     $con=mysqli_connect ("localhost", 'root', '','locations');
     if (!$con) {
         die('Not connected : ' . mysqli_connect_error());
@@ -10,7 +11,6 @@ function get_saved_locations(){
     $rows = array();
     while($r = mysqli_fetch_assoc($sqldata)) {
         $rows[] = $r;
-
     }
     $indexed = array_map('array_values', $rows);
 
@@ -24,7 +24,7 @@ function get_saved_locations(){
 
 ?>
 
-<?
+<?php
 function console_log( $data ){
   echo '<script>';
   echo 'console.log('. json_encode( $data ) .')';
