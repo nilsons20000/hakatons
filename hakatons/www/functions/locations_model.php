@@ -11,6 +11,7 @@ function get_saved_locations(){
     $rows = array();
     while($r = mysqli_fetch_assoc($sqldata)) {
         $rows[] = $r;
+
     }
     $indexed = array_map('array_values', $rows);
 
