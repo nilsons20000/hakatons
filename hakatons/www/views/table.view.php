@@ -1,23 +1,21 @@
 <?php
 
 
-$i = 0;
-foreach ($schools as $school) {
+for ($i = 0; $i < count($skolas); $i++)  {
     //TODO:Uzlabot koda lasamibu
     $id="sub_m$i";
     $id_subT="Subtable$i";
     $td_id="tdd$i";
-    echo' '.$id.'
-    		'.$id_subT.'
+    echo'  '.$id.'
+    	   '.$id_subT.'
 
 		<tr>
-		   	<td>'.$school->getName().'</td>
+		   	<td>'.$skolas[$i]['Iestades_nosaukums'].'</td>
 		   	<td>5</td></td>
 		   	<td>Videja </td>
 
 		   	<td id="check">
 			   	<input type="checkbox" name="toogle"  class="toogleSubmenu" id='.$id.'>
-
 			   	<label for='.$id.' class="toogleSubmenu"><i class="fa"></i></label>
 			</td>
 		</tr>
@@ -36,5 +34,4 @@ foreach ($schools as $school) {
 				</td>
 			</tr>
 	';
-    $i++;
 };

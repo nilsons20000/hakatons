@@ -5,7 +5,7 @@
     $schools = $database->getSchools();
 
 	include "functions/locations_model.php";
-
+	include "functions/functions.php";
  ?>
 <!DOCTYPE html>
 <html>
@@ -128,11 +128,22 @@
 	</thead>
 	<tbody> 
 	<?php
+	$page = $_GET["page"];
+    if ($page < 1 or $page == "") $page = 1;
+    // количество строк-статей на стр.
+    $limit = 20;
+	$start = getStart($page, $limit);
+	$skolas= getAllArticles($start, $limit);
     require "views/table.view.php";
 	?>
 	</tbody> 
  	</table>
 </nav>
+<?
+    echo "<center>";
+          echo pagination($page, $limit);
+    echo "</center>";
+?>
 </div>
 </body>
 </html>
