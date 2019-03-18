@@ -18,8 +18,8 @@ class School
     {
         $this->extra = Database::getExtra($this->ID);
         $this->profesija = Database::getProfesijas($this->ID);
-        $this->izglitiba = Database::getIestasanasTips($this->ID);
-        $this->koordinates = Database::getKoordinates($this->ID);
+      //  $this->izglitiba = Database::getIestasanasTips($this->ID);
+      //  $this->koordinates = Database::getKoordinates($this->ID);
     }
 
     public function getID() {
