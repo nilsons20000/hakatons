@@ -3,6 +3,7 @@
 
 $i = 0;
 foreach ($schools as $school) {
+    //TODO:Uzlabot koda lasamibu
     $id="sub_m$i";
     $id_subT="Subtable$i";
     $td_id="tdd$i";
@@ -22,7 +23,7 @@ foreach ($schools as $school) {
 		</tr>
 			<tr class="table_row">
 				<td id="tdd">
-				   	<div  id='.$id_subT.'>
+				   	<div id='.$id_subT.'>
 				   		<div class="stipendijaa"id="Stipendija">
 					   		<p>Stipendija
 					    	<span class="text">JA</span></p>

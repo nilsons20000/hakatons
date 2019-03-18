@@ -12,14 +12,14 @@ class School
     protected $extra;
     protected $profesija;
     protected $izglitiba;
-    protected $koordinates;
+    protected $koordinates; //TODO:Pievienot datubazei tabulu ar koordinatem, lai es varetu no ta iegut datus pareizi
 
     private function __construct()
     {
         $this->extra = Database::getExtra($this->ID);
         $this->profesija = Database::getProfesijas($this->ID);
-      //  $this->izglitiba = Database::getIestasanasTips($this->ID);
-      //  $this->koordinates = Database::getKoordinates($this->ID);
+        $this->izglitiba = Database::getIestasanasTips($this->ID);
+        $this->koordinates = Database::getKoordinates($this->ID);
     }
 
     public function getID() {
