@@ -14,7 +14,7 @@ class Database
         $conn = NULL;
         if ($conn == NULL) {
             try {
-                $conn = new PDO('mysql:host=' . $server . ';dbname=' . $dbName, $user, $pass);
+                $conn = new PDO('mysql:host=' . $server . ';dbname=' . $dbName, $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } catch (PDOException $e) {
                 echo 'PDO Error: ' . $e->getMessage();
@@ -24,15 +24,15 @@ class Database
     }
 
     public static function getIestasanasTips($id) {
-        $stm = self::conn()->prepare('Select izglitiba from iestasanas_tips left join macibu_iestades on iestasanas_tips.ID = macibu_iestades.ID WHERE ID = :id.');
+        $stm = self::conn()->prepare('SELECT izglitiba FROM iestasanas_tips LEFT JOIN izglitiba_iestades ON iestasanas_tips.ID = izglitiba_iestades.iestades_ID WHERE iestades_ID = :id;');
         $stm->execute(array(':id' => $id));
         return $stm->fetchAll(PDO::FETCH_ASSOC);
     }
 
     //TODO: Uztaisit query, kas iedod koordinates skolai, ta ka nav tabulas, tad to vel nevar izdarit;
     public static function getKoordinates($id) {
-        $stm = self::conn()->prepare();
-        $stm->execute();
+        $stm = self::conn()->prepare('SELECT longditude, latitude from koordinates left join macibu_iestades on koordinates.iestades_ID = macibu_iestades.ID where macibu_iestades.ID = :id;');
+        $stm->execute(array(':id'=>$id));
         return $stm->fetchAll(PDO::FETCH_ASSOC);
     }
 
