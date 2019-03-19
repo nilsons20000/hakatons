@@ -54,4 +54,11 @@ class Database
         #die(var_dump($stm->fetchAll(PDO::FETCH_ASSOC)));
         return $stm->fetchAll(PDO::FETCH_CLASS,'School');
     }
+
+    public function getFiltered($query) {
+        require_once 'School.php';
+        $stm = self::conn()->prepare($query);
+        $stm->execute();
+        return $stm->fetchAll(PDO::FETCH_CLASS,'School');
+    }
 }

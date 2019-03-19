@@ -2,7 +2,11 @@
     require "functions/Database.php";
     //require_once"functions/functions.php";
     $database = new Database();
-    $schools = $database->getSchools();
+    $schools = null;
+    if ($_SERVER['REQUEST_METHOD'] === "GET") {
+        $schools = $database->getSchools();
+    }
+
 
 	include "functions/locations_model.php";
 	include "functions/functions.php";
@@ -100,11 +104,7 @@
 					</div>
 					</form>
 				</div> 
-	</div> 	<? 
-	
-							
-	
-	?>
+	</div>
 
 	<span id="open" onclick="openNav()">☰ open</span>
 </header>
@@ -127,7 +127,9 @@
 }
 </script>
 <?php
-filter($_POST);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $schools = filter($_POST, $database);
+}
 ?>
 <nav class="dws-menu">  
 	<table width="100%" id="table">
@@ -146,7 +148,10 @@ filter($_POST);
 //    $limit = 20;
 //	$start = getStart($page, $limit);
 //	$skolas= getAllArticles($start, $limit);
-    require "views/table.view.php";
+    if ($schools != null) {
+        require "views/table.view.php";
+    };
+
 	?>
 	</tbody> 
  	</table>
