@@ -46,6 +46,7 @@ class Database
         $stm->execute(array(':school'=> $school));
         return $stm->fetchAll(PDO::FETCH_ASSOC);
     }
+    //
     public function getSchools(){
         require 'School.php';
         $stm = self::conn()->prepare('Select ID,nosaukums,registracijas_numurs,adrese,direktors,telefons,email from macibu_iestades');
