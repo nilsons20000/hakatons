@@ -8,7 +8,7 @@
 	include "functions/functions.php";
  ?>
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="css/main.css"><link rel="stylesheet" type="text/css" href="css/tabula.css">
@@ -37,63 +37,64 @@
 						<input type="" name="" placeholder="Attalums" id="attalums">
 					</div>
 					<div class="overlay-content_under">
-						<>
-						<div id="filter_block" id="select">
-						<p>Izglītība iestādes</p>
-						<select size="3">
-						  <option>Bērnudarzi</option>
-						  <option>Pēc bērnudarza</option>
-						  <option>Pēc 9.klases</option>
-						  <option>Pēc 12.klases</option>
-						  <option>Koledži</option>
-						  <option>Tehnikumi</option>
-						  <option>Universitātes</option>
-						</select>
-						</div>
-						<div id="filter_block">						
-						<p>Izglītība</p>
-
-						<select size="3">
-						  <option>Pirmskolas izglītība</option>
-						  <option>Pamatizglītība</option>
-						  <option>Vidējā izglītība</option>
-						  <option>Prof. vidējā izglītība</option>
-						  <option>Pēcvidējā izglītība</option>
-						  <option>Augstākā izglītība</option>
-						  <option>Pēcdiploma studijas</option>
-						</select>
-						</div>
-
-						<div id="filter_block">
-						<p>Reitings pēc eksamēniem</p>
-						<select size="3">
-						  <option>Matemātika</option>
-						  <option>Latviešu valoda</option>
-						  <option>Angļu valoda</option>
-						</select>
-						</div>
-
-						<div id="filter_block">
-						<p>Profesijas</p>
-						<select size="3">
-						  <option>Seit bus  </option>
-						  <option>Profesijas no DB</option>				
-						</select>
-						</div>
-
-						<div id="filter_block">
-							<div id="stipendija">
-								Stipendija
-								<p class="onoff"><input type="checkbox" value="1" id="checkboxID"><label for="checkboxID"></label></p>
+						<form action="filter.php" method="POST">
+							<div id="filter_block" id="select">
+							<p>Izglītība iestādes</p>
+							<select size="3">
+							  <option>Bērnudarzi</option>
+							  <option>Pēc bērnudarza</option>
+							  <option>Pēc 9.klases</option>
+							  <option>Pēc 12.klases</option>
+							  <option>Koledži</option>
+							  <option>Tehnikumi</option>
+							  <option>Universitātes</option>
+							</select>
 							</div>
-							<div id="kopmitne">
-								Kopmitne
-								<p class="onoff"><input type="checkbox" value="2" id="checkboxIDI"><label for="checkboxIDI"></label></p>
+
+							<div id="filter_block">
+							<p>Izglītība</p>
+							<select size="3">
+							  <option>Pirmskolas izglītība</option>
+							  <option>Pamatizglītība</option>
+							  <option>Vidējā izglītība</option>
+							  <option>Prof. vidējā izglītība</option>
+							  <option>Pēcvidējā izglītība</option>
+							  <option>Augstākā izglītība</option>
+							  <option>Pēcdiploma studijas</option>
+							</select>
 							</div>
-						</div>
-						<div id="search">
-	    				<button class="icon"><i class="fa fa-search fa-5x"></i></button>
-						</div>
+
+							<div id="filter_block">
+							<p>Reitings pēc eksamēniem</p>
+							<select size="3">
+							  <option>Matemātika</option>
+							  <option>Latviešu valoda</option>
+							  <option>Angļu valoda</option>
+							</select>
+							</div>
+
+							<div id="filter_block">
+							<p>Profesijas</p>
+							<select size="3">
+							  <option>Seit bus  </option>
+							  <option>Profesijas no DB</option>
+							</select>
+							</div>
+
+							<div id="filter_block">
+								<div id="stipendija">
+									Stipendija
+									<p class="onoff"><input type="checkbox" value="1" id="checkboxID"><label for="checkboxID"></label></p>
+								</div>
+								<div id="kopmitne">
+									Kopmitne
+									<p class="onoff"><input type="checkbox" value="2" id="checkboxIDI"><label for="checkboxIDI"></label></p>
+								</div>
+							</div>
+							<div id="search">
+							<button class="icon"><i class="fa fa-search fa-5x"></i></button>
+							</div>
+						</form>
 					</div>
 				</div> 
 	</div> 
