@@ -1,7 +1,6 @@
 <?php
 
-
-for ($i = 0; $i < count($skolas); $i++)  {
+for ($i = 0; $i < count($schools); $i++)  {
     //TODO:Uzlabot koda lasamibu
     $id="sub_m$i";
     $id_subT="Subtable$i";
@@ -10,9 +9,9 @@ for ($i = 0; $i < count($skolas); $i++)  {
     	   '.$id_subT.'
 
 		<tr>
-		   	<td>'.$skolas[$i]['Iestades_nosaukums'].'</td>
+		   	<td>'.$schools[$i]->getName().'</td>
 		   	<td>5</td></td>
-		   	<td>Videja </td>
+		   	<td>'. $schools[$i]->getIzglitiba().' </td>
 
 		   	<td id="check">
 			   	<input type="checkbox" name="toogle"  class="toogleSubmenu" id='.$id.'>

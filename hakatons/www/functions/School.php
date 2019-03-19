@@ -49,4 +49,12 @@ class School
         return $this->email;
     }
 
+    public function getIzglitiba() {
+        if ($this->izglitiba == 0) {
+            return 'NULL';
+        } else {
+            return $this->izglitiba[0]['izglitiba'];
+        }
+    }
+
 }

@@ -6,9 +6,10 @@
 
 	include "functions/locations_model.php";
 	include "functions/functions.php";
+	include "functions/filter.php";
  ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
+<html lang="lv" xmlns="http://www.w3.org/1999/html">
 <head>
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="css/main.css"><link rel="stylesheet" type="text/css" href="css/tabula.css">
@@ -25,57 +26,58 @@
 <div id="page-wrap">
 <header>
 	<div class="name">
-	<a href="index.html" title="На главную" id="title">Test-Site</a>
+	<a href="index.php" title="На главную" id="title">Test-Site</a>
 	</div>
 	<div id="myNav" class="overlay"> 
 				<a href="javascript:void(0)" 
 				class="closebtn" 
 				onclick="closeNav()">×</a> 
-				<div class="overlay-content"> 
-					<div id="mape_search">
-						<input type="" name="" placeholder="Adrese" id="adrese">
-						<input type="" name="" placeholder="Attalums" id="attalums">
-					</div>
+				<div class="overlay-content">
+<!--					<div id="mape_search">-->
+<!--						<input type="" name="" placeholder="Adrese" id="adrese">-->
+<!--						<input type="" name="" placeholder="Attalums" id="attalums">-->
+<!--					</div>-->
+					<form  enctype='multipart/form-data' action="" method="POST" multiple name="filter[]">
 					<div class="overlay-content_under">
-						<form action="filter.php" method="POST">
+						
 							<div id="filter_block" id="select">
 							<p>Izglītība iestādes</p>
-							<select size="3">
-							  <option>Bērnudarzi</option>
-							  <option>Pēc bērnudarza</option>
-							  <option>Pēc 9.klases</option>
-							  <option>Pēc 12.klases</option>
-							  <option>Koledži</option>
-							  <option>Tehnikumi</option>
-							  <option>Universitātes</option>
+							<select name="filter[]" size="3">
+							  <option name="filter[]" value="bernudarzi">Bērnudarzi</option>
+							  <option name="filter[]" value="pec_bernudarza">Pēc bērnudarza</option>
+							  <option name="filter[]" value="pec_9kl">Pēc 9.klases</option>
+							  <option name="filter[]" value="pec_12kl">Pēc 12.klases</option>
+							  <option name="filter[]" value="koledzi"> Koledži</option>
+							  <option name="filter[]" value="tehnikumi">Tehnikumi</option>
+							  <option name="filter[]" value="tehnikumi">Universitātes</option>
 							</select>
 							</div>
 
 							<div id="filter_block">
 							<p>Izglītība</p>
-							<select size="3">
-							  <option>Pirmskolas izglītība</option>
-							  <option>Pamatizglītība</option>
-							  <option>Vidējā izglītība</option>
-							  <option>Prof. vidējā izglītība</option>
-							  <option>Pēcvidējā izglītība</option>
-							  <option>Augstākā izglītība</option>
-							  <option>Pēcdiploma studijas</option>
+							<select name="filter[]" size="3">
+							  <option name="filter[]" value="pirms_izglitiba">Pirmskolas izglītība</option>
+							  <option name="filter[]" value="pamat_izglitiba">Pamatizglītība</option>
+							  <option name="filter[]" value="vid_izglitiba">Vidējā izglītība</option>
+							  <option name="filter[]" value="prof_vid_izgl">Prof. vidējā izglītība</option>
+							  <option name="filter[]" value="PecVid_izglitiba">Pēcvidējā izglītība</option>
+							  <option name="filter[]" value="Augstaka_izglitiba">Augstākā izglītība</option>
+							  <option name="filter[]" value="PecDiploma_studija">Pēcdiploma studijas</option>
 							</select>
 							</div>
 
 							<div id="filter_block">
 							<p>Reitings pēc eksamēniem</p>
-							<select size="3">
-							  <option>Matemātika</option>
-							  <option>Latviešu valoda</option>
-							  <option>Angļu valoda</option>
+							<select name="filter[]" size="3">
+							  <option name="filter[]" value="matematika">Matemātika</option>
+							  <option name="filter[]" value="latv_val">Latviešu valoda</option>
+							  <option name="filter[]" value="angl_val">Angļu valoda</option>
 							</select>
 							</div>
 
 							<div id="filter_block">
 							<p>Profesijas</p>
-							<select size="3">
+							<select name="filter[]" size="3">
 							  <option>Seit bus  </option>
 							  <option>Profesijas no DB</option>
 							</select>
@@ -84,21 +86,27 @@
 							<div id="filter_block">
 								<div id="stipendija">
 									Stipendija
-									<p class="onoff"><input type="checkbox" value="1" id="checkboxID"><label for="checkboxID"></label></p>
+									<p class="onoff"><input type="checkbox" name="filter[]" value="stipendijaA" id="checkboxID"><label for="checkboxID"></label></p>
 								</div>
 								<div id="kopmitne">
 									Kopmitne
-									<p class="onoff"><input type="checkbox" value="2" id="checkboxIDI"><label for="checkboxIDI"></label></p>
+									<p class="onoff"><input type="checkbox" name="filter[]" value="kopmitneE" id="checkboxIDI"><label for="checkboxIDI"></label></p>
 								</div>
 							</div>
 							<div id="search">
-							<button class="icon"><i class="fa fa-search fa-5x"></i></button>
+							<input class="icon" value="Submit" type="Submit"><i class="fa fa-search fa-5x"></i></button>
+						
 							</div>
-						</form>
 					</div>
+					</form>
 				</div> 
-	</div> 
-	<span id="open"onclick="openNav()">☰ open</span>
+	</div> 	<? 
+	
+							
+	
+	?>
+
+	<span id="open" onclick="openNav()">☰ open</span>
 </header>
 <div id="map" style="width: 100%; height: 440px; border: 1px solid #AAA;"></div> 
 <script>
@@ -107,17 +115,20 @@
     center: [57.08233,25.24116],
     minZoom: 0.5,
     zoom: 7
-  })
+  });
 
   L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
   subdomains: ['a', 'b', 'c']
-  }).addTo( map )
+  }).addTo( map );
 
   for ( var i=0; i < tempArray.length; ++i ){
     L.marker(tempArray[i]).bindPopup( '<a href="' + tempArray[i] + '" target="_blank">' + tempArray[i][2] + '</a>' ) .addTo( map );
 }
 </script>
+<?php
+filter($_POST);
+?>
 <nav class="dws-menu">  
 	<table width="100%" id="table">
 	<thead>
@@ -129,22 +140,22 @@
 	</thead>
 	<tbody> 
 	<?php
-	$page = $_GET["page"];
-    if ($page < 1 or $page == "") $page = 1;
-    // количество строк-статей на стр.
-    $limit = 20;
-	$start = getStart($page, $limit);
-	$skolas= getAllArticles($start, $limit);
+//	$page = $_GET["page"];
+//    if ($page < 1 or $page == "") $page = 1;
+//    // количество строк-статей на стр.
+//    $limit = 20;
+//	$start = getStart($page, $limit);
+//	$skolas= getAllArticles($start, $limit);
     require "views/table.view.php";
 	?>
 	</tbody> 
  	</table>
 </nav>
-<?
-    echo "<center>";
-          echo pagination($page, $limit);
-    echo "</center>";
-?>
+<?php
+//    echo "<center>";
+//          echo pagination($page, $limit);
+//    echo "</center>";
+//?>
 </div>
 </body>
 </html>

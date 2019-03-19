@@ -6,8 +6,7 @@
  * Time: 12:37
  */
 
-function filter($_POST){
-
-
+function filter($post){
 
 }
+?>
