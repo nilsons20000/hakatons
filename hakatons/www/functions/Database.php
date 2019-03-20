@@ -49,7 +49,7 @@ class Database
     //
     public function getSchools(){
         require 'School.php';
-        $stm = self::conn()->prepare('Select ID,nosaukums,registracijas_numurs,adrese,direktors,telefons,email from macibu_iestades');
+        $stm = self::conn()->prepare('Select ID,nosaukums,registracijas_numurs,adrese,direktors,telefons,email from macibu_iestades limit 50');
         $stm->execute();
         #die(var_dump($stm->fetchAll(PDO::FETCH_ASSOC)));
         return $stm->fetchAll(PDO::FETCH_CLASS,'School');
@@ -60,5 +60,23 @@ class Database
         $stm = self::conn()->prepare($query);
         $stm->execute();
         return $stm->fetchAll(PDO::FETCH_CLASS,'School');
+    }
+
+    public function printIestades() {
+        $stm = self::conn()->prepare('Select * from iestasanas_tips');
+        $stm->execute();
+        $result = $stm->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($result as $row) {
+                echo '<option name="filter[]" value="iestades'.$row['ID'].'">'.$row['izglitiba'].'</option>';
+        }
+    }
+    public function printProfesijas(){
+        $stm = self::conn()->prepare('Select * from profesijas');
+        $stm->execute();
+        $result = $stm->fetchAll(PDO::FETCH_ASSOC);
+        var_dump($result);
+        foreach ($result as $row) {
+            echo '<option name="filter[]" value="profesija'.$row['ID'].'">'.$row['profesija'].'</option>';
+        }
     }
 }

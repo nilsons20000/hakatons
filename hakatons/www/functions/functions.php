@@ -1,4 +1,52 @@
 <?php
+	function printForm($database){
+		echo '					<form  enctype=\'multipart/form-data\' action="" method="POST" multiple name="filter[]">
+					<div class="overlay-content_under">
+						
+							<div id="filter_block" id="select">
+							<p>Izglītība iestādes</p>
+							<select name="filter[]" size="3">';
+		$database->printIestades();
+		echo '							</select>
+							</div>
+							
+							<div id="filter_block">
+							<p>Izglītība</p>
+							<select name="filter[]" size="3">
+							  <option name="filter[]" value="pirms_izglitiba">Pirmskolas izglītība</option>
+							  <option name="filter[]" value="pamat_izglitiba">Pamatizglītība</option>
+							  <option name="filter[]" value="vid_izglitiba">Vidējā izglītība</option>
+							  <option name="filter[]" value="prof_vid_izgl">Prof. vidējā izglītība</option>
+							  <option name="filter[]" value="PecVid_izglitiba">Pēcvidējā izglītība</option>
+							  <option name="filter[]" value="Augstaka_izglitiba">Augstākā izglītība</option>
+							  <option name="filter[]" value="PecDiploma_studija">Pēcdiploma studijas</option>
+							</select>
+							</div>
+														<div id="filter_block">
+							<p>Profesijas</p>
+							<select name="filter[]" size="auto">
+							  ';
+		$database->printProfesijas();
+		//TODO:Salabot papildus opcijas, lai pogas strādātu un varētu vērtības iegūt no DB
+		echo'					</select>
+							</div>
+							<div id="filter_block">
+								<div id="stipendija">
+									Stipendija
+									<p class="onoff"><input type="checkbox" name="filter[]" value="stipendijaA" id="checkboxID"><label for="checkboxID"></label></p>
+								</div>
+								<div id="kopmitne">
+									Kopmitne
+									<p class="onoff"><input type="checkbox" name="filter[]" value="kopmitneE" id="checkboxIDI"><label for="checkboxID1"></label></p>
+								</div>
+							</div>
+							<div id="search">
+							<input class="icon" value="Submit" type="Submit"><i class="fa fa-search fa-5x"></i></button>
+
+							</div>
+					</div>
+					</form>';
+	}
 	function connectDB() {
 		$connect = mysql_connect("localhost", "root", "");
 		mysql_select_db("ucebnie_zavedenija_latvii", $connect);
