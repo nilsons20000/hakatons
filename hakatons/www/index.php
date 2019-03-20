@@ -74,13 +74,8 @@ include "functions/filter.php";
 	</thead>
 	<tbody> 
 	<?php
-//	$page = $_GET["page"];
-//    if ($page < 1 or $page == "") $page = 1;
-//    // количество строк-статей на стр.
-//    $limit = 20;
-//	$start = getStart($page, $limit);
-//	$skolas= getAllArticles($start, $limit);
     if ($schools != null) {
+        var_dump($schools);
         require "views/table.view.php";
     };
 
@@ -88,11 +83,6 @@ include "functions/filter.php";
 	</tbody> 
  	</table>
 </nav>
-<?php
-//    echo "<center>";
-//          echo pagination($page, $limit);
-//    echo "</center>";
-//?>
 </div>
 </body>
 </html>

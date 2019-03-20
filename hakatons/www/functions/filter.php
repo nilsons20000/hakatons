@@ -15,7 +15,7 @@ function filter($posts,$database){
         'iestades2' => 'iestID = 2',
         'iestades3' => 'iestID = 4',
 	    'iestades4' => 'iestID = 5',
-	    'iestades5' => 'iestID = 6',
+	    'iestades5' => 'iestID = 6 or 7',
 	    'iestades6' => 'iestID = 7',
         'iestades7' => 'iestID = 7',
         //Vajag pareizi aizpildit

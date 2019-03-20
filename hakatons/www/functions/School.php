@@ -52,7 +52,7 @@ class School
         if ($this->izglitiba == 0) {
             return 'NULL';
         } else {
-            return $this->izglitiba[0]['izglitiba'];
+            return end($this->izglitiba)['izglitiba'];
         }
     }
 
