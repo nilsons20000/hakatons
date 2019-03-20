@@ -29,13 +29,6 @@ class Database
         return $stm->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    //TODO: Uztaisit query, kas iedod koordinates skolai, ta ka nav tabulas, tad to vel nevar izdarit;
-    public static function getKoordinates($id) {
-        $stm = self::conn()->prepare('SELECT longditude, latitude from koordinates left join macibu_iestades on koordinates.iestades_ID = macibu_iestades.ID where macibu_iestades.ID = :id');
-        $stm->execute(array(':id'=>$id));
-        return $stm->fetchAll(PDO::FETCH_ASSOC);
-    }
-
     public static function getProfesijas($id) {
         $stm = self::conn()->prepare('Select profesijas.profesija from izglitibas_profesijas left join profesijas on izglitibas_profesijas.profesija = profesijas.ID WHERE izglitibas_profesijas.iestades_ID = :id');
         $stm->execute(array(':id' => $id));
@@ -49,7 +42,7 @@ class Database
     //
     public function getSchools(){
         require 'School.php';
-        $stm = self::conn()->prepare('Select ID,nosaukums,registracijas_numurs,adrese,direktors,telefons,email from macibu_iestades limit 50');
+        $stm = self::conn()->prepare('Select ID,nosaukums,registracijas_numurs,adrese,direktors,telefons,email,longtitude,latitude from macibu_iestades limit 50');
         $stm->execute();
         #die(var_dump($stm->fetchAll(PDO::FETCH_ASSOC)));
         return $stm->fetchAll(PDO::FETCH_CLASS,'School');

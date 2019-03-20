@@ -27,7 +27,6 @@
 							<select name="filter[]" size="auto">
 							  ';
 		$database->printProfesijas();
-		//TODO:Salabot papildus opcijas, lai pogas strādātu un varētu vērtības iegūt no DB
 		echo'					</select>
 							</div>
 							<div id="filter_block">
@@ -37,7 +36,7 @@
 								</div>
 								<div id="kopmitne">
 									Kopmitne
-									<p class="onoff"><input type="checkbox" name="filter[]" value="kopmitneE" id="checkboxIDI"><label for="checkboxID1"></label></p>
+									<p class="onoff"><input type="checkbox" name="filter[]" value="kopmitneE" id="checkboxID1"><label for="checkboxID1"></label></p>
 								</div>
 							</div>
 							<div id="search">
@@ -47,42 +46,24 @@
 					</div>
 					</form>';
 	}
-	function connectDB() {
-		$connect = mysql_connect("localhost", "root", "");
-		mysql_select_db("ucebnie_zavedenija_latvii", $connect);
-		mysql_set_charset("cp1257_general_ci", $connect);
-		mysql_query("SET NAMES UTF8");
-		return $connect;
+	function getSavedLocations($schools) {
+		$coordinates = '[';
+		foreach ($schools as $school) {
+			$long = $school->getLongtitude();
+			$lat = $school->getLatitude();
+			$name = $school->getName();
+			if ($long == NULL or $lat == NULL) {
+				continue;
+			}
+			if ($coordinates != '[') {
+				$coordinates .= ',';
+			}
+			$coordinates .= '["'.$lat.'","'.$long.'","'.$name.'"]';
+		}
+		$coordinates .= ']';
+		echo $coordinates;
 	}
-	function closeDB($connect) {
-		mysql_close($connect);
-	}
-	
-	function getAllArticles($start, $limit) {
-		$connect = connectDB();
-		$result = mysql_query("SELECT * FROM `macibu_iestades_infa` LIMIT ".$start.", ".$limit,$connect);
-		closeDB($connect);
-		return setResultToArray($result);
-	}
-	function getStart($page, $limit) {
-		return $limit * ($page - 1);
-	}
-	function setResultToArray($result) {
-		$array = array();
-		while ($row = mysql_fetch_assoc($result)) $array[] = $row;
-		return $array;
-	}
-	
-	function countArticles() {
-		$connect = connectDB();
-		$result = mysql_query("SELECT COUNT(`Reģistrācijas_numurs`) FROM `macibu_iestades_infa`", $connect) or die(mysql_error());
-		closeDB($connect);
-		$result = mysql_fetch_row($result);
-		return $result[0];
-	}
-
-	
-function pagination($page, $limit) {
+/*function pagination($page, $limit) {
 		// общее кол-во строк в БД
 		$count_articles = countArticles();
 		// общее количество стр.

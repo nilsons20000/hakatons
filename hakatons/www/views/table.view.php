@@ -10,7 +10,6 @@ for ($i = 0; $i < count($schools); $i++)  {
 
 		<tr>
 		   	<td>'.$schools[$i]->getName().'</td>
-		   	<td>5</td></td>
 		   	<td>'. $schools[$i]->getIzglitiba().' </td>
 
 		   	<td id="check">
