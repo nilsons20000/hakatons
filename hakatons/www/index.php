@@ -5,10 +5,10 @@
     $schools = null;
     if ($_SERVER['REQUEST_METHOD'] === "GET") {
         $schools = $database->getSchools();
+    } else {
+        $schools = filter($_POST, $database);
     }
 
-
-	include "functions/locations_model.php";
 	include "functions/functions.php";
 	include "functions/filter.php";
  ?>
@@ -63,11 +63,6 @@
     L.marker(tempArray[i]).bindPopup( '<a href="' + tempArray[i] + '" target="_blank">' + tempArray[i][2] + '</a>' ) .addTo( map ).tempArray[i][3];
 }
 </script>
-<?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $schools = filter($_POST, $database);
-}
-?>
 <nav class="dws-menu">  
 	<table width="100%" id="table">
 	<thead>
