@@ -51,7 +51,7 @@
 		foreach ($schools as $school) {
 			$long = $school->getLongtitude();
 			$lat = $school->getLatitude();
-			$name = $school->getName();
+			$name = replaceQuotes($school->getName());
 			if ($long == NULL or $lat == NULL) {
 				continue;
 			}
@@ -63,6 +63,10 @@
 		$coordinates .= ']';
 		echo $coordinates;
 	}
+	function replaceQuotes($name) {
+
+	    return str_replace('"','\\\"',$name);
+}
 /*function pagination($page, $limit) {
 		// общее кол-во строк в БД
 		$count_articles = countArticles();
@@ -102,5 +106,5 @@
 		return $pagination;
 	}
 	
-?>
+?>*/
 

@@ -40,7 +40,7 @@ function filter($posts,$database){
         } else {
             continue;
         }
-        //TODO:Pievienot fitresanas kodu;
+        //TODO:Uzlabot filtresanas kodu
 
 
     }

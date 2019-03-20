@@ -10,7 +10,7 @@ class Database
 {
 
     public static function &conn() {
-        $server = 'localhost';$dbName = 'old_macibu_iestades_latvija';$user = 'root';$pass = '';
+        $server = 'localhost';$dbName = 'macibu_iestades_latvija';$user = 'root';$pass = '';
         $conn = NULL;
         if ($conn == NULL) {
             try {
@@ -42,7 +42,7 @@ class Database
     //
     public function getSchools(){
         require 'School.php';
-        $stm = self::conn()->prepare('Select ID,nosaukums,registracijas_numurs,adrese,direktors,telefons,email,longtitude,latitude from macibu_iestades limit 50');
+        $stm = self::conn()->prepare('Select ID,nosaukums,registracijas_numurs,adrese,direktors,telefons,email,LAT as latitude ,LNG as longtitude from macibu_iestades left join iestades_geolokacija on macibu_iestades.ID = iestades_geolokacija.iestades_ID');
         $stm->execute();
         #die(var_dump($stm->fetchAll(PDO::FETCH_ASSOC)));
         return $stm->fetchAll(PDO::FETCH_CLASS,'School');

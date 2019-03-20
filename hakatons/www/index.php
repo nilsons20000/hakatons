@@ -47,7 +47,6 @@
 </header>
 <div id="map" style="width: 100%; height: 440px; border: 1px solid #AAA;"></div> 
 <script>
-  var tempArray = JSON.parse('<?php getSavedLocations($schools); ?>');
   var map = L.map( 'map', {
     center: [57.08233,25.24116],
     minZoom: 0.5,
@@ -58,9 +57,9 @@
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
   subdomains: ['a', 'b', 'c']
   }).addTo( map );
-
+  var tempArray = JSON.parse('<?php getSavedLocations($schools); ?>');
   for ( var i=0; i < tempArray.length; ++i ){
-    L.marker(tempArray[i]).bindPopup( '<a href="' + tempArray[i] + '" target="_blank">' + tempArray[i][2] + '</a>' ) .addTo( map ).tempArray[i][3];
+    L.marker(tempArray[i]).addTo(map).bindPopup(tempArray[i][2]);
 }
 </script>
 <nav class="dws-menu">  
