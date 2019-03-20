@@ -13,13 +13,12 @@
 							<div id="filter_block">
 							<p>Izglītība</p>
 							<select name="filter[]" size="3">
-							  <option name="filter[]" value="pirms_izglitiba">Pirmskolas izglītība</option>
-							  <option name="filter[]" value="pamat_izglitiba">Pamatizglītība</option>
-							  <option name="filter[]" value="vid_izglitiba">Vidējā izglītība</option>
-							  <option name="filter[]" value="prof_vid_izgl">Prof. vidējā izglītība</option>
-							  <option name="filter[]" value="PecVid_izglitiba">Pēcvidējā izglītība</option>
-							  <option name="filter[]" value="Augstaka_izglitiba">Augstākā izglītība</option>
-							  <option name="filter[]" value="PecDiploma_studija">Pēcdiploma studijas</option>
+							  <option name="filter[]" value="izglitiba1">Pirmskolas izglītība</option>
+							  <option name="filter[]" value="izglitiba2">Pamatizglītība</option>
+							  <option name="filter[]" value="izglitiba3">Vidējā izglītība</option>
+							  <option name="filter[]" value="izglitiba4">Prof. vidējā izglītība</option>
+							  <option name="filter[]" value="izglitiba5">Pēcvidējā izglītība</option>
+							  <option name="filter[]" value="izglitiba6">Augstākā izglītība</option>
 							</select>
 							</div>
 														<div id="filter_block">
@@ -48,6 +47,7 @@
 	}
 	function getSavedLocations($schools) {
 		$coordinates = '[';
+
 		foreach ($schools as $school) {
 			$long = $school->getLongtitude();
 			$lat = $school->getLatitude();

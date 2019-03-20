@@ -1,8 +1,10 @@
 <?php
     require "functions/Database.php";
+include "functions/filter.php";
     //require_once"functions/functions.php";
     $database = new Database();
     $schools = null;
+
     if ($_SERVER['REQUEST_METHOD'] === "GET") {
         $schools = $database->getSchools();
     } else {
@@ -10,7 +12,7 @@
     }
 
 	include "functions/functions.php";
-	include "functions/filter.php";
+
  ?>
 <!DOCTYPE html>
 <html lang="lv" xmlns="http://www.w3.org/1999/html">

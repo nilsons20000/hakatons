@@ -9,32 +9,29 @@
 function filter($posts,$database){
     $queryWhere = '';
     $filterArray = [
-        'stipendijA' => 'macibu_iestades_papildus.stipendija = 1',
+        'stipendijaA' => 'macibu_iestades_papildus.stipendija = 1',
         'kopmitneE' => 'macibu_iestades_papildus.kopmitne = 1',
-        'bernudarzi' => 'iestID = 1',
-        'pec_bernudarza' => 'iestID = 2',
-        'pec_9kl' => 'iestID = 4',
-	    'pec_12kl' => 'iestID = 5',
-	    'koledzi' => 'iestID = 6',
-	    'tehnikumi' => 'iestID = 7',
+        'iestades1' => 'iestID = 1',
+        'iestades2' => 'iestID = 2',
+        'iestades3' => 'iestID = 4',
+	    'iestades4' => 'iestID = 5',
+	    'iestades5' => 'iestID = 6',
+	    'iestades6' => 'iestID = 7',
+        'iestades7' => 'iestID = 7',
         //Vajag pareizi aizpildit
-        'pirms_izglitiba' => '',
-	    'pamat_izglitiba' => '',
-	    'vid_izglitiba' => '',
-	    'prof_vid_izgl' => '',
-	    'PecVid_izglitiba' => '',
-	    'Augstaka_izglitiba' => '',
-	    'PecDiploma_studija' => '',
+        'izglitiba1' => 'iestID = 1',
+	    'izglitiba2' => 'iestID = 2',
+	    'izglitiba3' => 'iestID = 4',
+	    'izglitiba4' => 'iestID = 7',
+	    'izglitiba5' => 'iestID = 5',
+	    'izglitiba6' => 'iestID = 6'
 
-        'matematika' => '',
-	    'latv_val' => '',
-	    'angl_val' => ''
     ];
     $keys = array_keys($filterArray);
     foreach ($posts['filter'] as $post ) {
         if (in_array($post,$keys)) {
             if ($queryWhere != '' and $filterArray[$post] != '') {
-                    $queryWhere .= 'and ';
+                    $queryWhere .= ' and ';
             }
             $queryWhere.=$filterArray[$post];
         } else {
@@ -44,9 +41,15 @@ function filter($posts,$database){
 
 
     }
+
+    if ($queryWhere != '') {
+        $queryWhere = 'WHERE ' . $queryWhere;
+    }
+    var_dump($queryWhere);
+    var_dump($posts);
     //Apvieno visas tabulas, lai varetu filtret varbut kaut kad tiks uztaisita labaka metode par so, bet pagaidam ta strada
     $queryDefault = '	SELECT 
-		macibu_iestades.ID,macibu_iestades.registracijas_numurs,macibu_iestades.nosaukums,macibu_iestades.adrese,macibu_iestades.direktors,macibu_iestades.telefons,macibu_iestades.email
+		macibu_iestades.ID,macibu_iestades.registracijas_numurs,macibu_iestades.nosaukums,macibu_iestades.adrese,macibu_iestades.direktors,macibu_iestades.telefons,macibu_iestades.email,macibu_iestades.latitude,macibu_iestades.longtitude
 	FROM
 		macibu_iestades
 			LEFT JOIN
@@ -61,7 +64,7 @@ function filter($posts,$database){
 		FROM
 			izglitibas_profesijas
 		LEFT JOIN profesijas ON izglitibas_profesijas.profesija = profesijas.ID) AS profesijas ON macibu_iestades.ID = profesijas.iestades_ID 
-        LEFT JOIN macibu_iestades_papildus ON macibu_iestades.ID = macibu_iestades_papildus.iestades_ID WHERE  '.$queryWhere.' group by macibu_iestades.ID;';
+        LEFT JOIN macibu_iestades_papildus ON macibu_iestades.ID = macibu_iestades_papildus.iestades_ID '.$queryWhere.' group by macibu_iestades.ID;';
 
     return $database->getFiltered($queryDefault);
 }
