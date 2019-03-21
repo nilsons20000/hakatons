@@ -46,6 +46,16 @@ include "functions/filter.php";
 	</div>
 
 	<span id="open" onclick="openNav()">☰ open</span>
+	<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 </header>
 <div id="map" style="width: 100%; height: 440px; border: 1px solid #AAA;"></div> 
 <script>
@@ -65,6 +75,7 @@ include "functions/filter.php";
 }
 </script>
 <nav class="dws-menu">  
+<input id="myInput" type="text" placeholder="Search..">
 	<table width="100%" id="table">
 	<thead>
 	   <tr>
@@ -72,7 +83,7 @@ include "functions/filter.php";
 	   		<th class="th_width">Izglītība</th>
 	   </tr>
 	</thead>
-	<tbody> 
+	<tbody id="myTable"> 
 	<?php
     if ($schools != null) {
         require "views/table.view.php";
