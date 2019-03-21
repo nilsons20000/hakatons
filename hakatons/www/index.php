@@ -17,16 +17,19 @@ include "functions/filter.php";
 <!DOCTYPE html>
 <html lang="lv" xmlns="http://www.w3.org/1999/html">
 <head>
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="css/main.css"><link rel="stylesheet" type="text/css" href="css/tabula.css">
-	<link rel="stylesheet" type="text/css" href="css/filter.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<title>Atrodi Skolu</title>
+	<script type="text/javascript" src="./js/jquery.min.js"></script>
+	<script type="text/javascript" src="./js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="./js/menu.js"></script>
 	<script src="https://use.fontawesome.com/320ac68418.js"></script>
+	<script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'></script>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/tabula.css">
+	<link rel="stylesheet" type="text/css" href="css/filter.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
 
-<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
-<script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'></script>
+
 </head>
 <body>
 <div id="page-wrap">
@@ -34,15 +37,15 @@ include "functions/filter.php";
 	<div class="name">
 	<a href="index.php" title="На главную" id="title">Test-Site</a>
 	</div>
-	<div id="myNav" class="overlay"> 
-				<a href="javascript:void(0)" 
-				class="closebtn" 
-				onclick="closeNav()">×</a> 
+	<div id="myNav" class="overlay">
+				<a href="javascript:void(0)"
+				class="closebtn"
+				onclick="closeNav()">×</a>
 				<div class="overlay-content">
                                 <?php
                                     require 'views/form.view.php';
                                 ?>
-				</div> 
+				</div>
 	</div>
 
 	<span id="open" onclick="openNav()">☰ open</span>
@@ -57,7 +60,7 @@ $(document).ready(function(){
 });
 </script>
 </header>
-<div id="map" style="width: 100%; height: 440px; border: 1px solid #AAA;"></div> 
+<div id="map" style="width: 100%; height: 440px; border: 1px solid #AAA;"></div>
 <script>
   var map = L.map( 'map', {
     center: [57.08233,25.24116],
@@ -74,7 +77,19 @@ $(document).ready(function(){
     L.marker(tempArray[i]).addTo(map).bindPopup(tempArray[i][2]);
 }
 </script>
-<nav class="dws-menu">  
+<nav class="dws-menu">
+<div class="form-group">
+    <select name="state" id="maxRows" class="form-control" style="width:150px;">
+        <option value="5000">Show All</option>
+        <option value="5">3</option>
+        <option value="10">5</option>
+        <option value="15">8</option>
+        <option value="20">12</option>
+        <option value="50">15</option>
+        <option value="75">18</option>
+        <option value="100">21</option>
+    </select>
+</div>
 <input id="myInput" type="text" placeholder="Search..">
 	<table width="100%" id="table">
 	<thead>
@@ -83,16 +98,77 @@ $(document).ready(function(){
 	   		<th class="th_width">Izglītība</th>
 	   </tr>
 	</thead>
-	<tbody id="myTable"> 
+	<tbody id="myTable">
 	<?php
     if ($schools != null) {
         require "views/table.view.php";
     };
 
 	?>
-	</tbody> 
+		<script>
+		// Basic example
+$(document).ready(function () {
+  $('#dtBasicExample').DataTable({
+    "paging": false
+  });
+  $('.dataTables_length').addClass('bs-select');
+});
+
+	$(document).ready(function () {
+  $('#dtBasicExample').DataTable({
+    "pagingType": "simple"
+  });
+  $('.dataTables_length').addClass('bs-select');
+});
+</script>
+	</tbody>
  	</table>
+	 	<div class="pagination-container">
+        <nav>
+            <ul class="pagination"></ul>
+        </nav>
+    </div>
 </nav>
 </div>
+<script>
+var table = '#table'
+$('#maxRows').on('change', function(){
+    $('.pagination').html('')
+    var trnum = 0
+    var maxRows = parseInt($(this).val())
+    var totalRows = $(table+' tbody tr').length
+    $(table+' tr:gt(0)').each(function(){
+        trnum++
+        if(trnum > maxRows){
+            $(this).hide()
+        }
+        if(trnum <= maxRows){
+            $(this).show()
+        }
+    })
+    if(totalRows > maxRows){
+        var pagenum = Math.ceil(totalRows/maxRows)
+        for(var i=1;i<=pagenum;){
+            $('.pagination').append('<li data-page="'+i+'">\<span>'+ i++ +'<span class="sr-only">(current)</span></span>\</li>').show()
+        }
+    }
+    $('.pagination li:first-child').addClass('active')
+    $('.pagination li').on('click',function(){
+        var pageNum = $(this).attr('data-page')
+        var trIndex = 0;
+        $('.pagination li').removeClass('active')
+        $(this).addClass('active')
+        $(table+' tr:gt(0)').each(function(){
+            trIndex++
+            if(trIndex > (maxRows*pageNum) || trIndex <= ((maxRows*pageNum)-maxRows)){
+                $(this).hide()
+            } else{
+                $(this).show()
+            }
+        })
+    })
+})
+
+</script>
 </body>
 </html>

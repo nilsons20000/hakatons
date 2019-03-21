@@ -18,14 +18,10 @@ for ($i = 0; $i < count($schools); $i++)  {
 			<tr class="table_row">
 				<td id="tdd">
 				   	<div id='.$id_subT.'>
-				   		<div class="stipendijaa"id="Stipendija">
-					   		<p>Stipendija
-					    	<span class="text">JA</span></p>
-						</div>
-						<div id="Kopmitne">
-					    	<p >Kopmitne
-					    	<span class="text">JA</span></p>
-				    	</div>
+					   		<p>Telefona numurs: <span class="text">'.$schools[$i]->getPhoneNr().'</span></p>
+					    	<p >Adrese: <span class="text">'.$schools[$i]->getAddress().'</span></p>
+					    	<p>Direktors: <span class="text">'.$schools[$i]->getDirector().'</span></p>
+					    	<p>E-pasts: <span class="text">'.$schools[$i]->getEmail().'</span></p>
 				    </div>
 				</td>
 			</tr>

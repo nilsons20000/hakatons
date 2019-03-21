@@ -13,10 +13,10 @@ function filter($posts,$database){
         'kopmitneE' => 'macibu_iestades_papildus.kopmitne = 1',
         'iestades1' => '(iestID = 1)',
         'iestades2' => '(iestID = 2)',
-        'iestades3' => '(iestID = 4)',
+        'iestades3' => '(iestID = 3)',
 	    'iestades4' => '(iestID = 5)',
 	    'iestades5' => '(iestID = 6 or iestID = 7)',
-	    'iestades6' => '(iestID = 7)',
+	    'iestades6' => '(iestID = 6)',
         'iestades7' => '(iestID = 7)',
         //Vajag pareizi aizpildit
         'izglitiba1' => '(iestID = 1)',
@@ -29,29 +29,22 @@ function filter($posts,$database){
     ];
     if (!empty($posts)) {
         $filterArray += getProfesijasFilter();
-        //die(var_dump($filterArray));
         $keys = array_keys($filterArray);
         foreach ($posts['filter'] as $post) {
-            if ($post = '') {
-                continue;
-            }
             if (in_array($post, $keys)) {
                 if ($queryWhere != '' and $filterArray[$post] != '') {
                     $queryWhere .= ' and ';
                 }
+
                 $queryWhere .= $filterArray[$post];
             } else {
                 continue;
             }
-            //TODO:Uzlabot filtresanas kodu
-
-
         }
     }
         if ($queryWhere != '') {
             $queryWhere = 'WHERE ' . $queryWhere;
         }
-
     //Apvieno visas tabulas, lai varetu filtret varbut kaut kad tiks uztaisita labaka metode par so, bet pagaidam ta strada
     $queryDefault = '	SELECT 
 		macibu_iestades.ID,macibu_iestades.registracijas_numurs,macibu_iestades.nosaukums,macibu_iestades.adrese,macibu_iestades.direktors,macibu_iestades.telefons,macibu_iestades.email,macibu_iestades.latitude,macibu_iestades.longtitude
