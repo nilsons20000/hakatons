@@ -40,7 +40,7 @@ include "functions/filter.php";
 				onclick="closeNav()">×</a> 
 				<div class="overlay-content">
                                 <?php
-                                    printForm($database);
+                                    require 'views/form.view.php';
                                 ?>
 				</div> 
 	</div>
