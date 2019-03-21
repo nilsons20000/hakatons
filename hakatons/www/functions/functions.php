@@ -28,16 +28,7 @@
 		$database->printProfesijas();
 		echo'					</select>
 							</div>
-							<div id="filter_block">
-								<div id="stipendija">
-									Stipendija
-									<p class="onoff"><input type="checkbox" name="filter[]" value="stipendijaA" id="checkboxID"><label for="checkboxID"></label></p>
-								</div>
-								<div id="kopmitne">
-									Kopmitne
-									<p class="onoff"><input type="checkbox" name="filter[]" value="kopmitneE" id="checkboxID1"><label for="checkboxID1"></label></p>
-								</div>
-							</div>
+
 							<div id="search">
 							<input class="icon" value="Submit" type="Submit"><i class="fa fa-search fa-5x"></i></button>
 

@@ -11,22 +11,25 @@ function filter($posts,$database){
     $filterArray = [
         'stipendijaA' => 'macibu_iestades_papildus.stipendija = 1',
         'kopmitneE' => 'macibu_iestades_papildus.kopmitne = 1',
-        'iestades1' => 'iestID = 1',
-        'iestades2' => 'iestID = 2',
-        'iestades3' => 'iestID = 4',
-	    'iestades4' => 'iestID = 5',
-	    'iestades5' => 'iestID = 6 or 7',
-	    'iestades6' => 'iestID = 7',
-        'iestades7' => 'iestID = 7',
+        'iestades1' => '(iestID = 1)',
+        'iestades2' => '(iestID = 2)',
+        'iestades3' => '(iestID = 4)',
+	    'iestades4' => '(iestID = 5)',
+	    'iestades5' => '(iestID = 6 or iestID = 7)',
+	    'iestades6' => '(iestID = 7)',
+        'iestades7' => '(iestID = 7)',
         //Vajag pareizi aizpildit
-        'izglitiba1' => 'iestID = 1',
-	    'izglitiba2' => 'iestID = 2',
-	    'izglitiba3' => 'iestID = 4',
-	    'izglitiba4' => 'iestID = 7',
-	    'izglitiba5' => 'iestID = 5',
-	    'izglitiba6' => 'iestID = 6'
+        'izglitiba1' => '(iestID = 1)',
+	    'izglitiba2' => '(iestID = 2)',
+	    'izglitiba3' => '(iestID = 4)',
+	    'izglitiba4' => '(iestID = 7)',
+	    'izglitiba5' => '(iestID = 5)',
+	    'izglitiba6' => '(iestID = 6)'
 
     ];
+
+    $filterArray += getProfesijasFilter();
+    //die(var_dump($filterArray));
     $keys = array_keys($filterArray);
     foreach ($posts['filter'] as $post ) {
         if (in_array($post,$keys)) {
@@ -68,3 +71,12 @@ function filter($posts,$database){
 
     return $database->getFiltered($queryDefault);
 }
+
+    function getProfesijasFilter() {
+        $profArray = [];
+        $profesijasList = Database::getProfesijasList();
+        foreach ($profesijasList as $profesija) {
+            $profArray += ['profesija'.$profesija['ID'] => 'profesijas.ID = '.$profesija['ID']];
+        }
+        return $profArray;
+    }

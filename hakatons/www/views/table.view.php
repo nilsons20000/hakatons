@@ -5,9 +5,7 @@ for ($i = 0; $i < count($schools); $i++)  {
     $id="sub_m$i";
     $id_subT="Subtable$i";
     $td_id="tdd$i";
-    echo'  '.$id.'
-    	   '.$id_subT.'
-
+    echo'
 		<tr>
 		   	<td>'.$schools[$i]->getName().'</td>
 		   	<td>'. $schools[$i]->getIzglitiba().' </td>

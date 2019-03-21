@@ -75,7 +75,6 @@ include "functions/filter.php";
 	<tbody> 
 	<?php
     if ($schools != null) {
-        var_dump($schools);
         require "views/table.view.php";
     };
 
