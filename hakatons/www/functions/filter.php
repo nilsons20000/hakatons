@@ -27,29 +27,31 @@ function filter($posts,$database){
 	    'izglitiba6' => '(iestID = 6)'
 
     ];
-
-    $filterArray += getProfesijasFilter();
-    //die(var_dump($filterArray));
-    $keys = array_keys($filterArray);
-    foreach ($posts['filter'] as $post ) {
-        if (in_array($post,$keys)) {
-            if ($queryWhere != '' and $filterArray[$post] != '') {
-                    $queryWhere .= ' and ';
+    if (!empty($posts)) {
+        $filterArray += getProfesijasFilter();
+        //die(var_dump($filterArray));
+        $keys = array_keys($filterArray);
+        foreach ($posts['filter'] as $post) {
+            if ($post = '') {
+                continue;
             }
-            $queryWhere.=$filterArray[$post];
-        } else {
-            continue;
+            if (in_array($post, $keys)) {
+                if ($queryWhere != '' and $filterArray[$post] != '') {
+                    $queryWhere .= ' and ';
+                }
+                $queryWhere .= $filterArray[$post];
+            } else {
+                continue;
+            }
+            //TODO:Uzlabot filtresanas kodu
+
+
         }
-        //TODO:Uzlabot filtresanas kodu
-
-
     }
+        if ($queryWhere != '') {
+            $queryWhere = 'WHERE ' . $queryWhere;
+        }
 
-    if ($queryWhere != '') {
-        $queryWhere = 'WHERE ' . $queryWhere;
-    }
-    var_dump($queryWhere);
-    var_dump($posts);
     //Apvieno visas tabulas, lai varetu filtret varbut kaut kad tiks uztaisita labaka metode par so, bet pagaidam ta strada
     $queryDefault = '	SELECT 
 		macibu_iestades.ID,macibu_iestades.registracijas_numurs,macibu_iestades.nosaukums,macibu_iestades.adrese,macibu_iestades.direktors,macibu_iestades.telefons,macibu_iestades.email,macibu_iestades.latitude,macibu_iestades.longtitude

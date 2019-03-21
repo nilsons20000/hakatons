@@ -30,7 +30,7 @@ echo '							</select>
 														<div id="filter_block">
 							<p>Profesijas</p>
 							<select name="filter[]" size="auto">
-							  ';
+							  <option selected disabled>Izvēlaties profesiju</option>';
 $database->printProfesijas();
 echo'					</select>
 							</div>
