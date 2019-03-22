@@ -19,7 +19,7 @@ for ($i = 0; $i < count($schools); $i++)  {
 				<td id="tdd">
 				   	<div id='.$id_subT.'>
 					   		<p>Telefona numurs: <span class="text">'.$schools[$i]->getPhoneNr().'</span></p>
-					    	<p >Adrese: <span class="text">'.$schools[$i]->getAddress().'</span></p>
+					    	<p>Adrese: <span class="text">'.$schools[$i]->getAddress().'</span></p>
 					    	<p>Direktors: <span class="text">'.$schools[$i]->getDirector().'</span></p>
 					    	<p>E-pasts: <span class="text">'.$schools[$i]->getEmail().'</span></p>
 				    </div>

@@ -10,7 +10,7 @@ document.getElementById("myNav")
 
 $(document).ready(function () {
   $("input.toogleSubmenu").click(function () {
-    $("#Subtable"+$(this).prop("id").substr(5)).parent().fadeToggle();
+$("#Subtable"+$(this).prop("id").substr(5)).parent().fadeToggle();   
   });
 });
 

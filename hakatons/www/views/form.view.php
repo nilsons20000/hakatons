@@ -6,38 +6,28 @@
  * Time: 6:55 PM
  */
 
-echo '					<form  enctype=\'multipart/form-data\' action="" method="POST" multiple name="filter[]">
-					<div class="overlay-content_under">
-						
-							<div id="filter_block" id="select">
-							<p>Izglītība iestādes</p>
-							<select name="filter[]" size="3">';
+echo '					<form class="mx-auto" enctype=\'multipart/form-data\' action=""  method="POST" multiple name="filter[]">
+					        <ul class="navbar-nav">
+							<select class="custom-select " name="filter[]">
+							<option selected disabled>Izvēlaties iestade</option>';
 $database->printIestades();
 echo '							</select>
-							</div>
-							
-							<div id="filter_block">
-							<p>Izglītība</p>
-							<select name="filter[]" size="3">
-							  <option name="filter[]" value="izglitiba1">Pirmskolas izglītība</option>
-							  <option name="filter[]" value="izglitiba2">Pamatizglītība</option>
-							  <option name="filter[]" value="izglitiba3">Vidējā izglītība</option>
-							  <option name="filter[]" value="izglitiba4">Prof. vidējā izglītība</option>
-							  <option name="filter[]" value="izglitiba5">Pēcvidējā izglītība</option>
-							  <option name="filter[]" value="izglitiba6">Augstākā izglītība</option>
-							</select>
-							</div>
-														<div id="filter_block">
-							<p>Profesijas</p>
-							<select name="filter[]" size="auto">
+						                 
+                                <select class="custom-select" name="filter[]" >
+                                <option selected disabled>Izvēlaties Izglitibas veidu</option>
+                                  <option name="filter[]" value="izglitiba1">Pirmskolas izglītība</option>
+                                  <option name="filter[]" value="izglitiba2">Pamatizglītība</option>
+                                  <option name="filter[]" value="izglitiba3">Vidējā izglītība</option>
+                                  <option name="filter[]" value="izglitiba4">Prof. vidējā izglītība</option>
+                                  <option name="filter[]" value="izglitiba5">Pēcvidējā izglītība</option>
+                                  <option name="filter[]" value="izglitiba6">Augstākā izglītība</option>
+                                </select>
+														
+					        
+							<select class="custom-select" name="filter[]" >
 							  <option selected disabled>Izvēlaties profesiju</option>';
 $database->printProfesijas();
-echo'					</select>
-							</div>
-
-							<div id="search">
-							<input class="icon" value="Submit" type="Submit"><i class="fa fa-search fa-5x"></i></button>
-
-							</div>
-					</div>
-					</form>';
+echo'					    </select>
+							
+							
+					';
