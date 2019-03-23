@@ -1,7 +1,6 @@
 <?php
 require "functions/Database.php";
 include "functions/filter.php";
-//require_once"functions/functions.php";
 $database = new Database();
 $schools = null;
 
@@ -18,19 +17,17 @@ include "functions/functions.php";
 <html lang="lv" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Atrodi Skolu</title>
-    <script type="text/javascript" src="./js/jquery.js"></script>
+
     <script type="text/javascript" src="./js/menu.js"></script>
     <script src="https://use.fontawesome.com/320ac68418.js"></script>
     <script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'></script>
-    <script type="text/javascript" src="./js/jquery.simplePagination.js"></script>
-    <script type="text/javascript" src="./js/updatePaginator.js"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/tabula.css">
     <link rel="stylesheet" type="text/css" href="css/filter.css">
     <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css">
-    <link rel="stylesheet" type="text/css" href="./css/simplePagination.css">
     <meta charset="utf-8">
 
+    <script type="text/javascript" src="./js/jquery.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -44,7 +41,7 @@ include "functions/functions.php";
             </a>
         </div>
         <div class="d-block d-sm-none">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.php">
                 <img  src="css/img/small-logo.png" alt="atrodiskolu logo">
             </a>
         </div>
@@ -61,14 +58,8 @@ include "functions/functions.php";
                 require 'views/form.view.php';
                 ?>
 
-
-
-
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-danger my-2 my-sm-0" value="Submit" type="submit">Search</button>
-                </ul>
-            </form>
-
             <script>
                 $(document).ready(function () {
                     $("#myInput").on("keyup", function () {
@@ -79,7 +70,6 @@ include "functions/functions.php";
                     });
                 });
             </script>
-
         </div>
     </nav>
     <div class="row" id="content">
@@ -103,17 +93,17 @@ include "functions/functions.php";
         </div>
         <div class="col-xl-12">
             <nav class="dws-menu">
-            <div class="form-group">
-                <select name="state" id="maxRows" class="form-control" style="width:150px;">
-                    <option value="5000">Rādīt visus</option>
-                    <option value="10">5</option>
-                    <option value="20">10</option>
-                    <option value="50">25</option>
-                    <option value="100">50</option>
-                    <option value="150">75</option>
-                    <option value="200">100</option>
-                </select>
-            </div>
+                <div class="form-group">
+                    <select name="state" id="maxRows" class="form-control" style="width:150px;">
+                        <option value="5000">Rādīt visus</option>
+                        <option value="10">5</option>
+                        <option value="20">10</option>
+                        <option value="50">25</option>
+                        <option value="100">50</option>
+                        <option value="150">75</option>
+                        <option value="200">100</option>
+                    </select>
+                </div>
             <input id="myInput" type="text" placeholder="Search..">
             <table width="100%" id="table">
                 <thead>
@@ -191,9 +181,9 @@ include "functions/functions.php";
                         }
                     })
                 })
-            })
+            });
+        </script>
         </div>
-    </div>
 
 
 
