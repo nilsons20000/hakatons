@@ -22,13 +22,10 @@ include "functions/functions.php";
     <script type="text/javascript" src="./js/menu.js"></script>
     <script src="https://use.fontawesome.com/320ac68418.js"></script>
     <script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'></script>
-    <script type="text/javascript" src="./js/jquery.simplePagination.js"></script>
-    <script type="text/javascript" src="./js/updatePaginator.js"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/tabula.css">
     <link rel="stylesheet" type="text/css" href="css/filter.css">
     <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css">
-    <link rel="stylesheet" type="text/css" href="./css/simplePagination.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -92,15 +89,6 @@ include "functions/functions.php";
             </script>
         </div>
         <div class="text-center col-xl-12 col-center">
-            <nav aria-label="navigation">
-                <ul class="pagination mx-auto">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </nav>
             <?php
             if ($schools != null) {
                 require "views/table.view.php";
@@ -145,7 +133,6 @@ include "functions/functions.php";
                     <hr>
                 </div>
             </div>
-
         </div>
     </div>
 
