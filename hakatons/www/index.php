@@ -1,6 +1,7 @@
 <?php
 require "functions/Database.php";
 include "functions/filter.php";
+//require_once"functions/functions.php";
 $database = new Database();
 $schools = null;
 
@@ -17,31 +18,31 @@ include "functions/functions.php";
 <html lang="lv" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Atrodi Skolu</title>
-
+    <script type="text/javascript" src="./js/jquery.js"></script>
     <script type="text/javascript" src="./js/menu.js"></script>
     <script src="https://use.fontawesome.com/320ac68418.js"></script>
     <script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'></script>
+    <script type="text/javascript" src="./js/jquery.simplePagination.js"></script>
+    <script type="text/javascript" src="./js/updatePaginator.js"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/tabula.css">
     <link rel="stylesheet" type="text/css" href="css/filter.css">
     <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css">
+    <link rel="stylesheet" type="text/css" href="./css/simplePagination.css">
     <meta charset="utf-8">
-
-    <script type="text/javascript" src="./js/jquery.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar-collapsed">
         <div class="d-none d-sm-block">
             <a class="navbar-brand" href="#">
                 <img  src="css/img/large-logo.png" alt="atrodiskolu logo">
             </a>
         </div>
         <div class="d-block d-sm-none">
-            <a class="navbar-brand" href="index.php">
+            <a class="navbar-brand" href="#">
                 <img  src="css/img/small-logo.png" alt="atrodiskolu logo">
             </a>
         </div>
@@ -58,8 +59,6 @@ include "functions/functions.php";
                 require 'views/form.view.php';
                 ?>
 
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-danger my-2 my-sm-0" value="Submit" type="submit">Search</button>
             <script>
                 $(document).ready(function () {
                     $("#myInput").on("keyup", function () {
@@ -70,10 +69,11 @@ include "functions/functions.php";
                     });
                 });
             </script>
+
         </div>
     </nav>
     <div class="row" id="content">
-        <div class="col-xl-12" id="map" style="width: 100%; height: 700px;">
+        <div class="col-xl-12" id="map" style="width: 100%; height: 768px;">
             <script>
                 var map = L.map('map', {
                     center: [57.08233, 25.24116],
@@ -91,99 +91,63 @@ include "functions/functions.php";
                 }
             </script>
         </div>
-        <div class="col-xl-12">
-            <nav class="dws-menu">
-                <div class="form-group">
-                    <select name="state" id="maxRows" class="form-control" style="width:150px;">
-                        <option value="5000">Rādīt visus</option>
-                        <option value="10">5</option>
-                        <option value="20">10</option>
-                        <option value="50">25</option>
-                        <option value="100">50</option>
-                        <option value="150">75</option>
-                        <option value="200">100</option>
-                    </select>
-                </div>
-            <input id="myInput" type="text" placeholder="Search..">
-            <table width="100%" id="table">
-                <thead>
-                <tr>
-                    <th class="th_width">Nosaukums</th>
-                    <th class="th_width">Izglītība</th>
-                </tr>
-                </thead>
-                <tbody id="myTable">
-                <?php
-                if ($schools != null) {
-                    require "views/table.view.php";
-                };
-                ?>
-                <script>
-                    // Basic example
-                    $(document).ready(function () {
-                        $('#dtBasicExample').DataTable({
-                            "paging": false
-                        });
-                        $('.dataTables_length').addClass('bs-select');
-                    });
-                    $(document).ready(function () {
-                        $('#dtBasicExample').DataTable({
-                            "pagingType": "simple"
-                        });
-                        $('.dataTables_length').addClass('bs-select');
-                    });
-                </script>
-                </tbody>
-            </table>
-            <div class="pagination-container">
-                <nav>
-                    <ul class="pagination"></ul>
-                </nav>
-            </div>
+        <div class="text-center col-xl-12 col-center">
+            <nav aria-label="navigation">
+                <ul class="pagination mx-auto">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
             </nav>
-        </div>
+            <?php
+            if ($schools != null) {
+                require "views/table.view.php";
+            };
+            //TODO: Pabeigt
+            ?>
+            <div class="row" id="list-item">
+                <div class="col">
+                    <h2>Skolas nosaukums</h2>
+                    <div class="row">
+                        <div class="col-12">
+                            <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#skola2-kontakti" aria-expanded="false" aria-controls="skola-kontakti">
+                                Kontakti
+                            </button>
+                            <div class="collapse multi-collapse" id="skola2-kontakti">
+                                <div class="card card-body">
+                                    adrese<br>
+                                    talr:<br>
+                                    direktors:<br>
+                                    epasts:
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#skola2-statistika" aria-expanded="false" aria-controls="skola1-statistika">
+                                Eksamena statistika
+                            </button>
+                            <div class="collapse multi-collapse" id="skola2-statistika">
+                                <div class="card card-body">
+                                    <h4>Matematika</h4>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width:75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4>Latviešu valoda</h4>
+                                    <div class="progress">
+                                        <div class="progress-bar  bg-info" role="progressbar" style="width:50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
 
-
-        <script>
-            var table = '#table';
-            $('#maxRows').on('change', function () {
-                $('.pagination').html('');
-                var trnum = 0;
-                var maxRows = parseInt($(this).val());
-                var totalRows = $(table + ' tbody tr').length;
-                $(table + ' tr:gt(0)').each(function () {
-                    trnum++;
-                    if (trnum > maxRows) {
-                        $(this).hide()
-                    }
-                    if (trnum <= maxRows) {
-                        $(this).show()
-                    }
-                });
-                if (totalRows > maxRows) {
-                    var pagenum = Math.ceil(totalRows / maxRows);
-                    for (var i = 1; i <= pagenum;) {
-                        $('.pagination').append('<li data-page="' + i + '">\<span>' + i++ + '<span class="sr-only">(current)</span></span>\</li>').show()
-                    }
-                }
-                $('.pagination li:first-child').addClass('active');
-                $('.pagination li').on('click', function () {
-                    var pageNum = $(this).attr('data-page');
-                    var trIndex = 0;
-                    $('.pagination li').removeClass('active');
-                    $(this).addClass('active');
-                    $(table + ' tr:gt(0)').each(function () {
-                        trIndex++;
-                        if (trIndex > (maxRows * pageNum) || trIndex <= ((maxRows * pageNum) - maxRows)) {
-                            $(this).hide()
-                        } else {
-                            $(this).show()
-                        }
-                    })
-                })
-            });
-        </script>
         </div>
+    </div>
 
 
 
