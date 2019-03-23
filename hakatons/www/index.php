@@ -17,7 +17,8 @@ include "functions/functions.php";
 <html lang="lv" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Atrodi Skolu</title>
-
+    <script type="text/javascript" src="./js/jquery.js"></script>
+    <script type="text/javascript" src="./js/jquery.js"></script>
     <script type="text/javascript" src="./js/menu.js"></script>
     <script src="https://use.fontawesome.com/320ac68418.js"></script>
     <script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'></script>
@@ -27,7 +28,7 @@ include "functions/functions.php";
     <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css">
     <meta charset="utf-8">
 
-    <script type="text/javascript" src="./js/jquery.js"></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
