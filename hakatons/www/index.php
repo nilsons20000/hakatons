@@ -111,7 +111,7 @@ include "functions/functions.php";
                 <div class="col">
                     <h2>Skolas nosaukums</h2>
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-8 mx-auto">
                             <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#skola2-kontakti" aria-expanded="false" aria-controls="skola-kontakti">
                                 Kontakti
                             </button>
