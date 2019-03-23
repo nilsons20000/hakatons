@@ -1,0 +1,76 @@
+
+table{
+	border:2px solid grey;
+}
+th{
+	width:30%;
+}
+tr{
+	width:100%;
+	border-bottom: 2px solid black;
+}
+table tr{
+	text-align: center;
+}
+.dws-menu *{
+	margin:0;
+	padding: 0;
+}
+.dws-menu tr [type="checkbox"]{
+	display: none;
+}
+	
+.dws-menu label.toogleSubmenu .fa::before{
+	 content: "\f0d7";
+	 color: black;
+	 font-weight: bold;
+	 font-size: 20px;
+}
+
+.dws-menu input.toggleSubmenu:checked ~ label.toggleSubmenu .fa::before{
+	 content: "\f0d8";
+	 color: #ffffff;
+	 color: black;
+	 font-weight: bold;
+	 font-size: 20px;
+}    
+.dws-menu input.toogleSubmenu:checked ~ label.toogleSubmenu .fa::before{
+	 content: "\f0d8";
+	 color: #ffffff;
+	 color: black;
+	 font-weight: bold;
+	 font-size: 20px;
+}
+
+#Subtable {
+	display: none;
+	width: 100%;
+}
+#Stipendija{
+	text-align: center;
+	width: 100%;
+}
+#Subtable p{
+		border-bottom:1px solid grey;
+}
+
+#Kopmitne{
+	width: 100%;
+	text-align: center;
+}
+.text{
+	width: 100%;
+	border-left:1px solid grey;
+}
+
+.table_row {
+	margin: 0 auto;
+	width: 300%;
+	display: flex;
+	justify-content: center;
+}
+#tdd{
+	display: none;
+	width: 100%;
+	border-top:4px solid grey;
+}
