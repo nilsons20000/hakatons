@@ -93,7 +93,6 @@ include "functions/functions.php";
             if ($schools != null) {
                 require "views/table.view.php";
             };
-            //TODO: Pabeigt
             ?>
             
             </div>

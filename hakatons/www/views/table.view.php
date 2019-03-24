@@ -1,7 +1,6 @@
 <?php
 
 for ($i = 0; $i < count($schools); $i++)  {
-    //TODO:Uzlabot koda lasamibu
     $id="sub_m$i";
     $id_subT="Subtable$i";
     $td_id="tdd$i";

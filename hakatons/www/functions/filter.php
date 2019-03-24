@@ -8,17 +8,16 @@
 
 function filter($posts,$database){
     $queryWhere = '';
+    var_dump($posts['filter']);
     $filterArray = [
-        'stipendijaA' => 'macibu_iestades_papildus.stipendija = 1',
-        'kopmitneE' => 'macibu_iestades_papildus.kopmitne = 1',
+        //Kamer nav daudz opcijas var pievienot ar roku.
         'iestades1' => '(iestID = 1)',
         'iestades2' => '(iestID = 2)',
         'iestades3' => '(iestID = 3)',
-	    'iestades4' => '(iestID = 5)',
-	    'iestades5' => '(iestID = 6 or iestID = 7)',
+	    'iestades4' => '(iestID = 4)',
+	    'iestades5' => '(iestID = 5)',
 	    'iestades6' => '(iestID = 6)',
         'iestades7' => '(iestID = 7)',
-        //Vajag pareizi aizpildit
         'izglitiba1' => '(iestID = 1)',
 	    'izglitiba2' => '(iestID = 2)',
 	    'izglitiba3' => '(iestID = 4)',
@@ -41,10 +40,20 @@ function filter($posts,$database){
                 continue;
             }
         }
+
+        if ($posts['filter'][3] != '') {
+            if ($queryWhere != '') {
+                $queryWhere .= ' and ';
+            }
+
+            $queryWhere .= '(macibu_iestades.nosaukums like \'%' . $posts['filter'][3] . '%\')';
+        }
     }
+
         if ($queryWhere != '') {
             $queryWhere = 'WHERE ' . $queryWhere;
         }
+    var_dump($queryWhere);
     //Apvieno visas tabulas, lai varetu filtret varbut kaut kad tiks uztaisita labaka metode par so, bet pagaidam ta strada
     $queryDefault = '	SELECT 
 		macibu_iestades.ID,macibu_iestades.registracijas_numurs,macibu_iestades.nosaukums,macibu_iestades.adrese,macibu_iestades.direktors,macibu_iestades.telefons,macibu_iestades.email,macibu_iestades.latitude,macibu_iestades.longtitude
@@ -62,7 +71,7 @@ function filter($posts,$database){
 		FROM
 			izglitibas_profesijas
 		LEFT JOIN profesijas ON izglitibas_profesijas.profesija = profesijas.ID) AS profesijas ON macibu_iestades.ID = profesijas.iestades_ID 
-        LEFT JOIN macibu_iestades_papildus ON macibu_iestades.ID = macibu_iestades_papildus.iestades_ID '.$queryWhere.' group by macibu_iestades.ID;';
+        LEFT JOIN macibu_iestades_papildus ON macibu_iestades.ID = macibu_iestades_papildus.iestades_ID '.$queryWhere.' group by macibu_iestades.ID; limit 100';
 
     return $database->getFiltered($queryDefault);
 }
