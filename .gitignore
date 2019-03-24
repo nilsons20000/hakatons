@@ -10,3 +10,5 @@ hakatons/www/.idea/vcs.xml
 hakatons/www/.idea/modules.xml
 hakatons/www/.idea/misc.xml
 hakatons/www/.idea/encodings.xml
+*.xml
+*.iml
