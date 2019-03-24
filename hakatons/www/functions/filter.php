@@ -27,7 +27,7 @@ function filter($posts,$database){
 
     ];
     if (!empty($posts)) {
-        $filterArray += getProfesijasFilter();
+        $filterArray += getProfesijasForFilter();
         $keys = array_keys($filterArray);
         foreach ($posts['filter'] as $post) {
             if (in_array($post, $keys)) {
@@ -76,7 +76,7 @@ function filter($posts,$database){
     return $database->getFiltered($queryDefault);
 }
 
-    function getProfesijasFilter() {
+    function getProfesijasForFilter() {
         $profArray = [];
         $profesijasList = Database::getProfesijasList();
         foreach ($profesijasList as $profesija) {
