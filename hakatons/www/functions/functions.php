@@ -1,7 +1,5 @@
 <?php
-	function printForm($database){
-
-	}
+	//Koordinātes priekš kartes
 	function getSavedLocations($schools) {
 		$coordinates = '[';
 

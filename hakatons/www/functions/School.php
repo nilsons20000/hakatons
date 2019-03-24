@@ -9,14 +9,12 @@
 class School
 {
     protected $ID,$nosaukums,$registracijas_numurs,$adrese,$direktors,$telefons,$email;
-    //protected $extra;
     protected $profesija;
     protected $izglitiba;
     public $longtitude,$latitude;
 
     private function __construct()
     {
-        //$this->extra = Database::getExtra($this->ID);
         $this->profesija = Database::getProfesijas($this->ID);
         $this->izglitiba = Database::getIestasanasTips($this->ID);
     }

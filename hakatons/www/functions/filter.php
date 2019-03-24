@@ -39,7 +39,7 @@ function filter($posts,$database){
                 continue;
             }
         }
-
+        //Meklēšana
         if ($posts['filter'][3] != '') {
             if ($queryWhere != '') {
                 $queryWhere .= ' and ';
@@ -52,7 +52,6 @@ function filter($posts,$database){
         if ($queryWhere != '') {
             $queryWhere = 'WHERE ' . $queryWhere;
         }
-    var_dump($queryWhere);
     //Apvieno visas tabulas, lai varetu filtret varbut kaut kad tiks uztaisita labaka metode par so, bet pagaidam ta strada
     $queryDefault = '	SELECT 
 		macibu_iestades.ID,macibu_iestades.registracijas_numurs,macibu_iestades.nosaukums,macibu_iestades.adrese,macibu_iestades.direktors,macibu_iestades.telefons,macibu_iestades.email,macibu_iestades.latitude,macibu_iestades.longtitude
