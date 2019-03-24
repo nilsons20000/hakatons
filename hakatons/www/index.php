@@ -70,7 +70,7 @@ include "functions/functions.php";
         </div>
     </nav>
     <div class="row" id="content">
-        <div class="col-xl-12" id="map" style="width: 100%; height: 768px;">
+        <div class="col-xl-12" id="map" style="width: 100%; height: 70vh;">
             <script>
                 var map = L.map('map', {
                     center: [57.08233, 25.24116],
