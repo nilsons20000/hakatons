@@ -49,7 +49,7 @@ class Database
     //
     public function getSchools(){
         require 'School.php';
-        $stm = self::conn()->prepare('Select ID,nosaukums,registracijas_numurs,adrese,direktors,telefons,email,latitude ,longtitude from macibu_iestades limit 100');
+        $stm = self::conn()->prepare('Select ID,nosaukums,registracijas_numurs,adrese,direktors,telefons,email,latitude ,longtitude from macibu_iestades');
         $stm->execute();
         #die(var_dump($stm->fetchAll(PDO::FETCH_ASSOC)));
         return $stm->fetchAll(PDO::FETCH_CLASS,'School');
