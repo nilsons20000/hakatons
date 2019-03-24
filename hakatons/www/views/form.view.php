@@ -28,6 +28,10 @@ echo '							</select>
 							  <option selected disabled>Izvēlaties profesiju</option>';
 $database->printProfesijas();
 echo'					    </select>
-							
-							
+                    				
+                            <input class="form-control mr-sm-2" type="search" placeholder="Meklēt" aria-label="Adrese">
+                            
+                            <button class="btn btn-outline-danger my-2 my-sm-0" value="Submit" type="submit">Mēklēt</button>
+                        </ul>
+                    </form>		
 					';

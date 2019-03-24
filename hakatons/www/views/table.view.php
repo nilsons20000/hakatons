@@ -1,29 +1,38 @@
-
 <?php
+
 for ($i = 0; $i < count($schools); $i++)  {
     //TODO:Uzlabot koda lasamibu
     $id="sub_m$i";
     $id_subT="Subtable$i";
     $td_id="tdd$i";
+
     echo'
-		<tr>
-		   	<td>'.$schools[$i]->getName().'</td>
-		   	<td>'. $schools[$i]->getIzglitiba().' </td>
-		   	<td id="check">
-			   	<input type="checkbox" name="toogle"  class="toogleSubmenu" id='.$id.'>
-			   	<label for='.$id.' class="toogleSubmenu"><i class="fa"></i></label>
-			</td>
-		</tr>
-			<tr class="table_row">
-				<td id="tdd">
-				   	<div class="card cardbody" id='.$id_subT.'>
-					   		<p>Telefona numurs: <span class="text">'.$schools[$i]->getPhoneNr().'</span></p>
-					    	<p >Adrese: <span class="text">'.$schools[$i]->getAddress().'</span></p>
-					    	<p>Direktors: <span class="text">'.$schools[$i]->getDirector().'</span></p>
-					    	<p>E-pasts: <span class="text">'.$schools[$i]->getEmail().'</span></p>
-					    	
-				    </div>
-				</td>
-			</tr>
-	';
+     <div class="row" id="list-item">
+        <div class="col">
+            <p>
+                <h2>'.$schools[$i]->getName().'</h2>
+                <h5>'. $schools[$i]->getIzglitiba().'</h5>
+            </p>
+            <div class="row">
+                <div class="col-10 mx-auto">
+                    <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#'.$id.'-kontakti" aria-expanded="false" aria-controls="'.$id.'-kontakti">
+                        Kontakti
+                    </button>
+                    <div class="collapse multi-collapse" id="'.$id.'-kontakti">
+                        <div class="card card-body">
+                            Adrese: '.$schools[$i]->getAddress().'<br>
+                            Talr: '.$schools[$i]->getPhoneNr().'<br>
+                            Direktors: '.$schools[$i]->getDirector().'<br>
+                            Epasts: '.$schools[$i]->getEmail().'
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+            <hr>
+        </div>
+    </div>';
 };
+
+//    bernudarzam jabūt bez statistika
+//    if(.$schools[$i]->getIzglitiba(). == '1-12 klase' or  .$schools[$i]->getIzglitiba(). =='pec 9 klases' or  .$schools[$i]->getIzglitiba(). == 'Tehnikumi' or  .$schools[$i]->getIzglitiba(). =='Koledži')
