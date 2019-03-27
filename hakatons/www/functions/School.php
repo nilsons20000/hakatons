@@ -31,11 +31,11 @@ class School
         return $this->registracijas_numurs;
     }
     public function getAddress() {
-        return $this->adrese;
+        return mb_convert_case($this->adrese,MB_CASE_UPPER_SIMPLE);
     }
 
     public function getDirector() {
-        return $this->direktors;
+        return mb_convert_case($this->direktors,MB_CASE_TITLE_SIMPLE);
     }
 
     public function getPhoneNr(){
@@ -57,7 +57,7 @@ class School
                     $izglString .= ', ';
                     $izglString .= mb_convert_case($izgl['izglitiba'],MB_CASE_LOWER);
                 } else {
-                    $izglString .= mb_convert_case($izgl['izglitiba'],MB_CASE_TITLE);
+                    $izglString .= mb_convert_case($izgl['izglitiba'],MB_CASE_TITLE_SIMPLE);
                 }
 
 
