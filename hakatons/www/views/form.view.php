@@ -9,12 +9,12 @@
 echo '					<form class="mx-auto" enctype=\'multipart/form-data\' action=""  method="POST" multiple name="filter[]">
 					        <ul class="navbar-nav">
 							<select class="custom-select " name="filter[]">
-							<option selected>Izvēlaties iestade</option>';
+							<option selected value="null">Izvēlaties iestadi</option>';
 $database->printIestades();
 echo '							</select>
 						                 
                                 <select class="custom-select" name="filter[]" >
-                                <option selected>Izvēlaties Izglitibas veidu</option>
+                                <option selected>Izvēlēties izglītību</option>
                                   <option name="filter[]" value="izglitiba1">Pirmskolas izglītība</option>
                                   <option name="filter[]" value="izglitiba2">Pamatizglītība</option>
                                   <option name="filter[]" value="izglitiba3">Vidējā izglītība</option>
@@ -25,9 +25,9 @@ echo '							</select>
 														
 					        
 							<select class="custom-select" name="filter[]" >
-							  <option selected>Izvēlaties profesiju</option>';
+							  <option selected value="null">Izvēlaties profesiju</option>';
 $database->printProfesijas();
-echo'					    </select>
+echo '					    </select>
                     				
                             <input class="form-control mr-sm-2" type="search" name="filter[]" placeholder="Meklēt" aria-label="Adrese">
                             

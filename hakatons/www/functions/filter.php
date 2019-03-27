@@ -69,7 +69,7 @@ function filter($posts,$database){
 		FROM
 			izglitibas_profesijas
 		LEFT JOIN profesijas ON izglitibas_profesijas.profesija = profesijas.ID) AS profesijas ON macibu_iestades.ID = profesijas.iestades_ID 
-        LEFT JOIN macibu_iestades_papildus ON macibu_iestades.ID = macibu_iestades_papildus.iestades_ID '.$queryWhere.' group by macibu_iestades.ID;';
+        LEFT JOIN macibu_iestades_papildus ON macibu_iestades.ID = macibu_iestades_papildus.iestades_ID '.$queryWhere.' group by macibu_iestades.ID limit 100;';
 
     return $database->getFiltered($queryDefault);
 }
