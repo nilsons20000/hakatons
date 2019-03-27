@@ -26,12 +26,10 @@ include "functions/functions.php";
     <link rel="stylesheet" type="text/css" href="css/tabula.css">
     <link rel="stylesheet" type="text/css" href="css/filter.css">
     <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css">
-    <link rel="stylesheet" type="text/css" href="node_modules/leaflet.markercluster/dist/MarkerCluster.css">
-    <link rel="stylesheet" type="text/css" href="node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="node_modules/leaflet.markercluster/dist/leaflet.markercluster-src.js"></script>
+    <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
 </head>
 <body style="overflow-x:hidden">
     <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar-collapsed">
@@ -91,6 +89,8 @@ include "functions/functions.php";
                 for (var i = 0; i < tempArray.length; ++i) {
                     L.marker(tempArray[i]).addTo(map).bindPopup(tempArray[i][2]);
                 }
+
+                L.markerClusterGroup();
 
 
             </script>
