@@ -94,7 +94,7 @@ include "functions/functions.php";
                 var tempArray = JSON.parse('<?php getSavedLocations($schools); ?>');
 
                 var markers = L.markerClusterGroup({
-                    maxClusterRadius: 30
+                    maxClusterRadius: 50
                 });
 
                 for (var i = 0; i < tempArray.length; ++i) {

@@ -50,7 +50,21 @@ class School
         if ($this->izglitiba == 0) {
             return 'NULL';
         } else {
-            return end($this->izglitiba)['izglitiba'];
+            $izglString = '';
+            $i = 0;
+            foreach ($this->izglitiba as $izgl) {
+                if ($i > 0) {
+                    $izglString .= ', ';
+                    $izglString .= mb_convert_case($izgl['izglitiba'],MB_CASE_LOWER);
+                } else {
+                    $izglString .= mb_convert_case($izgl['izglitiba'],MB_CASE_TITLE);
+                }
+
+
+                $i++;
+            }
+
+            return $izglString;
         }
     }
 
