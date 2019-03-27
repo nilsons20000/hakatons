@@ -18,18 +18,24 @@ include "functions/functions.php";
 <html lang="lv" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Atrodi Skolu</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script type="text/javascript" src="./js/jquery.js"></script>
     <script type="text/javascript" src="./js/menu.js"></script>
     <script src="https://use.fontawesome.com/320ac68418.js"></script>
-    <script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'></script>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/tabula.css">
     <link rel="stylesheet" type="text/css" href="css/filter.css">
-    <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
+<!--    Leaflet start-->
+    <link rel="stylesheet" type="text/css" href="css/leaflet.css" />
+    <script type="text/javascript" src="js/leaflet.js"></script>
+<!--    Leaflet end-->
+<!--MarketCluster start-->
+    <link rel="stylesheet" type="text/css" href="css/MarkerCluster.css">
+    <link rel="stylesheet" type="text/css" href="css/MarkerCluster.Default.css">
+    <script type="text/javascript" src="js/leaflet.markercluster.js"></script>
+<!--MarketCluster end-->
 </head>
 <body style="overflow-x:hidden">
     <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar-collapsed">
@@ -86,11 +92,17 @@ include "functions/functions.php";
 
 
                 var tempArray = JSON.parse('<?php getSavedLocations($schools); ?>');
+
+                var markers = L.markerClusterGroup({
+                    maxClusterRadius: 30
+                });
+
                 for (var i = 0; i < tempArray.length; ++i) {
-                    L.marker(tempArray[i]).addTo(map).bindPopup(tempArray[i][2]);
+                    var m = L.marker(tempArray[i]).bindPopup(tempArray[i][2]);
+                    markers.addLayer(m);
                 }
 
-                L.markerClusterGroup();
+                map.addLayer(markers);
 
 
             </script>
