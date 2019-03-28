@@ -45,7 +45,7 @@ include "functions/functions.php";
             </a>
         </div>
         <div class="d-block d-sm-none">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.php">
                 <img  src="css/img/small-logo.png" alt="atrodiskolu logo">
             </a>
         </div>

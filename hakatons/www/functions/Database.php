@@ -10,7 +10,7 @@ class Database
 {
 
     public static function &conn() {
- $server = 'localhost';$dbName = 'macibu_iestades_latvija';$user = 'root';$pass = '';
+  $server = 'localhost';$dbName = 'u229302596_skola';$user = 'u229302596_user';$pass = 'YS0xUViLsiRJ';
         $conn = NULL;
         if ($conn == NULL) {
             try {
@@ -49,7 +49,7 @@ class Database
     //
     public function getSchools(){
         require 'School.php';
-        $stm = self::conn()->prepare('Select ID,nosaukums,registracijas_numurs,adrese,direktors,telefons,email,latitude ,longtitude from macibu_iestades limit 100');
+        $stm = self::conn()->prepare('Select ID,nosaukums,registracijas_numurs,adrese,direktors,telefons,email,latitude ,longtitude from macibu_iestades');
         $stm->execute();
         #die(var_dump($stm->fetchAll(PDO::FETCH_ASSOC)));
         return $stm->fetchAll(PDO::FETCH_CLASS,'School');
@@ -74,7 +74,6 @@ class Database
         $stm = self::conn()->prepare('Select * from profesijas');
         $stm->execute();
         $result = $stm->fetchAll(PDO::FETCH_ASSOC);
-        var_dump($result);
         foreach ($result as $row) {
             echo '<option name="filter[]" value="profesija'.$row['ID'].'">'.$row['profesija'].'</option>';
         }

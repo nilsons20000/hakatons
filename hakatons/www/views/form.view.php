@@ -14,7 +14,7 @@ $database->printIestades();
 echo '							</select>
 						                 
                                 <select class="custom-select" name="filter[]" >
-                                <option selected>Izvēlēties izglītību</option>
+                                <option selected>Izvēlēties izglītības līmeni</option>
                                   <option name="filter[]" value="izglitiba1">Pirmskolas izglītība</option>
                                   <option name="filter[]" value="izglitiba2">Pamatizglītība</option>
                                   <option name="filter[]" value="izglitiba3">Vidējā izglītība</option>
