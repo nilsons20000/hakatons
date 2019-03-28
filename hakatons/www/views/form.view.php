@@ -23,11 +23,11 @@ echo '							</select>
                                   <option name="filter[]" value="izglitiba6">Augstākā izglītība</option>
                                 </select>
 														
-					        
-							<select class="custom-select" name="filter[]" >
-							  <option selected value="null">Izvēlaties profesiju</option>';
+					        <input class="custom-select" placeholder="Izvēlēties profesiju" list="profesijas" name="filter[]" autocomplete="off">
+							<datalist id="profesijas" >
+							  ';
 $database->printProfesijas();
-echo '					    </select>
+echo '					    </datalist>
                     				
                             <input class="form-control mr-sm-2" type="search" name="filter[]" placeholder="Meklēt" aria-label="Adrese">
                             

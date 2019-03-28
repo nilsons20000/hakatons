@@ -10,7 +10,7 @@ class Database
 {
 
     public static function &conn() {
-  $server = 'localhost';$dbName = 'u229302596_skola';$user = 'u229302596_user';$pass = 'YS0xUViLsiRJ';
+  $server = 'localhost';$dbName = 'macibu_iestades_latvija';$user = 'root';$pass = '';
         $conn = NULL;
         if ($conn == NULL) {
             try {
@@ -36,7 +36,7 @@ class Database
     }
 
     public static function getProfesijasList() {
-        $stm = self::conn()->prepare('Select ID from profesijas');
+        $stm = self::conn()->prepare('Select profesija from profesijas');
         $stm->execute();
         return $stm->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -49,7 +49,7 @@ class Database
     //
     public function getSchools(){
         require 'School.php';
-        $stm = self::conn()->prepare('Select ID,nosaukums,registracijas_numurs,adrese,direktors,telefons,email,latitude ,longtitude from macibu_iestades');
+        $stm = self::conn()->prepare('Select ID,nosaukums,registracijas_numurs,adrese,direktors,telefons,email,latitude ,longtitude from macibu_iestades limit 100');
         $stm->execute();
         #die(var_dump($stm->fetchAll(PDO::FETCH_ASSOC)));
         return $stm->fetchAll(PDO::FETCH_CLASS,'School');
@@ -75,7 +75,7 @@ class Database
         $stm->execute();
         $result = $stm->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $row) {
-            echo '<option name="filter[]" value="profesija'.$row['ID'].'">'.$row['profesija'].'</option>';
+            echo '<option name="filter[]" value="'.$row['profesija'].'">'.$row['profesija'].'</option>';
         }
     }
 }
