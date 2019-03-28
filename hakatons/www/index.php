@@ -98,8 +98,15 @@ include "functions/functions.php";
                 });
 
                 for (var i = 0; i < tempArray.length; ++i) {
-                    var m = L.marker(tempArray[i]).bindPopup(tempArray[i][2]);
-                    markers.addLayer(m);
+                    <?php
+                        if (sizeof($schools) > 1) {
+                            echo '                   var m = L.marker(tempArray[i]).bindPopup(tempArray[i][2]);
+                    markers.addLayer(m);';
+                        } else {
+                            echo 'L.marker(tempArray[i]).addTo(map).bindPopup(tempArray[i][2]);';
+                        }
+                        ?>
+
                 }
 
                 map.addLayer(markers);
